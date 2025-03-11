@@ -11,7 +11,7 @@ function App() {
   const [units, setUnits] = useState('metric'); // metric or imperial
   
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY
-  const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+  //const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 
   // Function to fetch current weather
   const fetchWeather = async (searchCity) => {
@@ -22,7 +22,8 @@ function App() {
     
     try {
       const response = await fetch(
-        `${CORS_PROXY}https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&units=${units}&appid=${API_KEY}`
+        //`${CORS_PROXY}https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&units=${units}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&units=${units}&appid=${API_KEY}`
       );
       
       if (!response.ok) {
@@ -44,7 +45,8 @@ function App() {
   const fetchForecast = async (searchCity) => {
     try {
       const response = await fetch(
-        `${CORS_PROXY}https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&units=${units}&appid=${API_KEY}`
+        //`${CORS_PROXY}https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&units=${units}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&units=${units}&appid=${API_KEY}`
       );
       
       if (!response.ok) {
@@ -71,7 +73,8 @@ function App() {
     
     try {
       const response = await fetch(
-        `${CORS_PROXY}https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
+        //`${CORS_PROXY}https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
       );
       
       if (!response.ok) {
@@ -97,7 +100,8 @@ function App() {
   const fetchForecastByCoords = async (lat, lon) => {
     try {
       const response = await fetch(
-        `${CORS_PROXY}https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
+        //`${CORS_PROXY}https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
       );
       
       if (!response.ok) {
