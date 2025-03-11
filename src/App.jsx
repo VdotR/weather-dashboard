@@ -233,7 +233,7 @@ function App() {
   useEffect(() => {
     // Try to get user location on initial load
     getUserLocation();
-  }, []);
+  });
   
   return (
     <div className="App">
