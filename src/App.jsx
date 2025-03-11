@@ -229,11 +229,11 @@ function App() {
     }
   };
   
-  // Initialize on component mount
+  // Initialize on component mount - FIXED with dependency array
   useEffect(() => {
     // Try to get user location on initial load
     getUserLocation();
-  });
+  }, []); // Empty dependency array ensures this runs only once at mount
   
   return (
     <div className="App">
