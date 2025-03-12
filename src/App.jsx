@@ -11,7 +11,6 @@ function App() {
   const [units, setUnits] = useState('metric'); // metric or imperial
   
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY
-  //const API_KEY = "d93b63c3feaaa26dcfc9f881accd7e1c"
   //const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 
   // Function to fetch current weather
