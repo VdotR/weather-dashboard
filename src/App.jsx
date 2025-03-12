@@ -165,10 +165,62 @@ function App() {
     const newUnits = units === 'metric' ? 'imperial' : 'metric';
     setUnits(newUnits);
     if (weather) {
-      fetchWeather(weather.name);
+      // Use the newUnits directly instead of relying on the state update
+      fetchWeatherWithSpecificUnits(weather.name, newUnits);
     }
   };
   
+  // Weather fetch with specified units
+  const fetchWeatherWithSpecificUnits = async (searchCity, unitSystem) => {
+    if (!searchCity) return;
+    
+    setLoading(true);
+    setError('');
+    
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&units=${unitSystem}&appid=${API_KEY}`
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+      
+      const data = await response.json();
+      setWeather(data);
+      fetchForecastWithSpecificUnits(searchCity, unitSystem);
+    } catch (err) {
+      console.error("Weather fetch error:", err);
+      setError('Failed to fetch weather data. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Forecast fetch with specified units
+  const fetchForecastWithSpecificUnits = async (searchCity, unitSystem) => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&units=${unitSystem}&appid=${API_KEY}`
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+      
+      const data = await response.json();
+      
+      // Process the forecast data to get one forecast per day
+      const dailyData = data.list.filter((reading, index) => 
+        index % 8 === 0 // Get one reading per day (every 8th item is 24h apart)
+      );
+      
+      setForecast(dailyData);
+    } catch (err) {
+      console.error('Error fetching forecast:', err);
+    }
+  };
+
   // Format time from Unix timestamp
   const formatTime = (timestamp) => {
     return new Date(timestamp * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
