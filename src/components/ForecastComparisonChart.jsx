@@ -23,7 +23,7 @@ const ForecastComparisonChart = ({ forecast, units }) => {
   return (
     <div className="weather-container">
       <div className="forecast">
-        <h3>Temperature Comparison</h3>
+        <h3>Temperature Trend</h3>
         <div className="forecast-items" style={{ 
           height: '12rem',
           display: 'block', // Override any flex styling
