@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Search, MapPin, Wind, Droplets, Sunrise, Sunset, Thermometer, Navigation } from 'lucide-react';
+import ForecastComparisonChart from './components/ForecastComparisonChart';
+
 import './App.css';
 
 function App() {
@@ -409,7 +411,12 @@ function App() {
             )}
           </div>
         )}
-        
+
+        {/* Temperature Trend Chart */}
+        {forecast.length > 0 && (
+          <ForecastComparisonChart forecast={forecast} units={units} />
+        )}
+                
         {/* Footer */}
         <footer>
           <p>Weather Dashboard • Built with React • Powered By OpenWeather</p>
