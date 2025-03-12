@@ -1,4 +1,4 @@
-# Weather Dashboard v1.0
+# Weather Dashboard v1.1
 A sleek, responsive weather application built with React that provides real-time weather information and forecasts for locations worldwide.
 
 ## Features
@@ -9,3 +9,5 @@ A sleek, responsive weather application built with React that provides real-time
 - Responsive Design: Works on desktop, tablet, and mobile devices
 - Dynamic UI: Background changes with soothing colors based on current weather conditions and time of day
 
+## Updates
+- v1.1: Added data visualization for temperature forecast.
