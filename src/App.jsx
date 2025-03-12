@@ -412,7 +412,7 @@ function App() {
         
         {/* Footer */}
         <footer>
-          <p>Weather Dashboard • Built with React</p>
+          <p>Weather Dashboard • Built with React • Powered By OpenWeather</p>
         </footer>
       </header>
     </div>
